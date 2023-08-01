@@ -4,3 +4,4 @@ client/.env
 api/node_modules
 client/node_modules
 api/uploads/*
+README.md
