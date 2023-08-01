@@ -16,14 +16,14 @@ export default function RegisterAndLoginForm(){
     }
 
     return(
-        <div className = "bg-blue-50 h-screen flex items-center">
+        <div className = "bg-black h-screen flex items-center">
             <form className="w-64 mx-auto mb-12" onSubmit = {handleSubmit}>
-                <input value={username} onChange={ev => setUsername(ev.target.value)} type="text" placeholder="Username" className="block w-full rounded-md p-2 mb-2"/>
-                <input value={password} onChange={ev=>setPassword(ev.target.value)} type="password" placeholder="Password" className="block w-full rounded-md p-2 mb-2"/>
-                <button className="bg-blue-500 text-white block w-full rounded-md p-2">
+                <input value={username} onChange={ev => setUsername(ev.target.value)} type="text" placeholder="Username" className="block w-full bg-gray-600 text-white rounded-md p-2 mb-2"/>
+                <input value={password} onChange={ev=>setPassword(ev.target.value)} type="password" placeholder="Password" className="block w-full bg-gray-600 text-white rounded-md p-2 mb-2"/>
+                <button className="bg-blue-600 text-white block w-full rounded-md p-2">
                     {isLoginorRegister === 'register' ? 'Register' : 'Login'}
                 </button>
-                <div className="text-center mt-2">
+                <div className="text-center text-white mt-2">
                     {isLoginorRegister === 'register' && (
                         <div className="ml-1">
                             Already a member? 
@@ -35,7 +35,7 @@ export default function RegisterAndLoginForm(){
                     {isLoginorRegister === 'login' && (
                         <div className="ml-1">
                             Don&apos;t have an account? 
-                            <button onClick={() => setIsLoginorRegister('register')}>
+                            <button className="mx-3" onClick={() => setIsLoginorRegister('register')}>
                                 Register
                             </button>
                         </div>

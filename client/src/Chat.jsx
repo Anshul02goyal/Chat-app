@@ -130,11 +130,11 @@ export default function Chat() {
 
   return (
     <div className="flex h-screen">
-      <div className="bg-white w-1/4 flex flex-col">
-        <div className="fixed bg-green-300 w-1/4">
+      <div className="bg-black w-1/4 flex flex-col">
+        <div className="fixed bg-black w-1/4">
           <Logo />
         </div>
-        <div className="max-h-full overflow-y-scroll pl-2 mt-10 mb-0">
+        <div className="max-h-full overflow-y-scroll pl-2 mt-10 mb-0" style={{scrollbarColor: "auto"}}>
           {Object.keys(onlinePeopleExclOurUser).map((userId) => (
             <Contact
               key={userId}
@@ -156,7 +156,7 @@ export default function Chat() {
             />
           ))}
         </div>
-        <div className=" text-gray-800 inline-flex justify-around text-center p-3 text-lg gap-20 float-left">
+        <div className=" text-white bg-black inline-flex justify-around text-center p-3 px-8 text-lg gap-20 float-left">
           <span className="flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -174,16 +174,16 @@ export default function Chat() {
           </span>
           <button
             onClick={logout}
-            className="bg-blue-100 py-1 border rounded-sm text-right"
+            className="px-4 py-1 bg-gray-600 border rounded-md"
           >
             Logout
           </button>
         </div>
       </div>
 
-      <div className="flex flex-col bg-blue-300 w-3/4 p-0 mb-0 bottom-0 ">
-        <div className="bg-blue-400 h-20"></div>
-        <div className="flex-grow">
+      <div className="flex flex-col bg-black w-3/4 p-0 mb-0 bottom-0 ">
+        {/* <div className="bg-blue-400 h-20"></div> */}
+        <div className="flex-grow p-2">
           {!selectUserId && (
             <div className="flex h-full items-center justify-center">
               <div className="text-gray-600">
@@ -203,15 +203,18 @@ export default function Chat() {
                   >
                     <div
                       className={
-                        "border p-2 my-2 rounded-md text-sm " +
+                        "py-2 px-4 my-2 rounded-xl text-sm " +
                         (message.sender === id
-                          ? "bg-blue-600 text-white text-right"
-                          : "bg-white text-gray-500 text-left")
+                          ? "bg-blue-500 mx-6 inline-block text-white text-right"
+                          : "bg-gray-600 mx-6 inline-block text-white text-left")
                       }
                     >
                       {message.text}
                       {message.file && (
-                        <div className="">
+                        <div className='"border p-2 rounded-md text-sm " +
+                        (message.sender === id
+                          ? "bg-blue-500 inline-block text-right"
+                          : "bg-gray-600 text-white text-left")'>
                           <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -240,6 +243,7 @@ export default function Chat() {
                           </a>
                         </div>
                       )}
+                      
                     </div>
                   </div>
                 ))}
@@ -249,15 +253,15 @@ export default function Chat() {
           )}
         </div>
         {!!selectUserId && (
-          <form className="flex gap-2" onSubmit={sendMessage}>
+          <form className="flex gap-2 mx-2 mb-2" onSubmit={sendMessage}>
             <input
               type="text"
               value={newMessageText}
               onChange={(ev) => setNewMessageText(ev.target.value)}
               placeholder="Type your message here"
-              className="bg-white flex-grow border rounded-md p-2"
+              className="bg-gray-600 text-white flex-grow rounded-md p-2"
             />
-            <label className="bg-blue-200 p-2 text-gray-600 cursor-pointer rounded-md border border-blue-200">
+            <label className="bg-gray-600 p-2 text-white cursor-pointer rounded-md">
               <input type="file" className="hidden" onChange={sendFile} />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
